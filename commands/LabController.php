@@ -20,6 +20,7 @@ use Yii;
  */
 class LabController extends Controller
 {
+    
     private function getQueryId($node) {
         return preg_replace('#[^0-9]#', '', substr($node, 0, 33));
     }

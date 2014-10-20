@@ -89,3 +89,40 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+
+/* base 739D34 */
+.color1 {
+    background: #AA7939;
+    color: #fff;
+}
+.color2 {
+    background: #8E2F5C;
+    color: #fff;
+}
+.color3 {
+    background: #294F6D;
+    color: #fff;
+}
+.color4 {
+    background: #749D34;
+    color: #fff;
+}
+
+.result-item {
+    height: 400px;
+    overflow: hidden;
+}
+
+.result-item .nr {
+    font-size: 2em;
+}
+
+.result-item a {
+    color: #fff;
+    text-decoration: underline;
+}
+.result-item h3 {
+    font-size: 1.2em;
+    height: 55px;
+    overflow: hidden;
+}

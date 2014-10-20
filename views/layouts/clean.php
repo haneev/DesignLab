@@ -23,27 +23,44 @@ AppAsset::register($this);
 
 <?php $this->beginBody() ?>
     <div class="wrap">
-        <?php
-            NavBar::begin([
-                'brandLabel' => 'My Company',
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
-                ],
-            ]);
-            echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => [
-                    ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'Search', 'url' => ['/site/search']]
-                ],
-            ]);
-            NavBar::end();
-        ?>
+	
+	<div class="navbar-header">
+	    <nav class="navbar-inverse navbar-fixed-top navbar">
+		<div class="container">
+		    
+		    <div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			  <span class="sr-only">Toggle navigation</span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Design Lab</a>
+		    </div>
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<?php echo Html::beginForm('', 'POST', ['class' => 'navbar-form navbar-left']); ?>
+			<div class="form-group">
+			    <?= Html::textInput('q', Yii::$app->controller->q, ['placeholder' => 'Typ hier uw term', 'class' => 'form-control']); ?>
+			    <?= Html::submitButton('Zoek', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+			</div>
+		    <?php echo Html::endForm(); ?>
+			
+		    <?php
+			echo Nav::widget([
+			    'options' => ['class' => 'navbar-nav navbar-right'],
+			    'items' => [
+				['label' => 'Home', 'url' => ['/site/index']],
+				['label' => 'Search', 'url' => ['/site/search']]
+			    ],
+			]);
+		    ?>
+		    </div>
+		</div>
+	    </nav>
+	</div>
    
-        <div class="container">
-            <?= $content ?>
-        </div>
+        
+        <?= $content ?>
         
     </div>
     

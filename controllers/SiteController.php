@@ -94,43 +94,82 @@ class SiteController extends Controller
         return $this->render('about');
     }
     
+    private function find($q) {
+	
+	$result = \app\models\Snippet::find()->joinWith('query', 'engine')->where([
+	    'queries.query' => $q,
+	])->all();
+
+	$score = function ($a) use ($q) {
+	    
+	    $score = 100; // higher better
+	    
+	    $pos = stripos($a->title, $q);
+	    if($pos !== false) {
+		$score += 10;
+	    }
+	    
+	    if($pos == 0) 
+		$score += 5;
+
+	    return $score;
+	};
+	
+	$sortFunction = function ($a, $b) use ($score) {
+	    // a < b ? 1 : -1
+	    
+	    $sa = $score($a);
+	    $sb = $score($b);
+	    
+	    return $sa < $sb ? 1 : -1;
+	};
+	
+	$objects = [];
+	foreach($result as $res) {
+	    $objects[] = $res;
+	}
+	
+	usort($objects, $sortFunction);
+	
+	return array_slice($objects, 0, 20);
+    }
+    
     public function actionSearch($q = '')
     {
         $this->layout = 'clean';
         
         $snippets = [];
         $nearest = [];
+	$query = '';
         if(Yii::$app->request->isPost || !empty($q) ) {
             
             $query = Yii::$app->request->isPost ? Yii::$app->request->post('q') : $q;
             
-            $snippets = \app\models\Snippet::find()->joinWith('query', 'engine')->where([
-                'queries.query' => $query,
-                'position' => 0
-            ])->limit(15)->all();
+            $snippets = $this->find($query);
             
-            if(count($snippets) == 0) {
-                $len = strlen($query);
-                $nearest = \app\models\Query::find()->where('LENGTH(query) < :r AND LENGTH(query) > :l')->addParams([
-                    ':l' => $len - 2,
-                    ':r' => $len + 2
-                ])->limit(20)->asArray()->all();
-                
-                usort($nearest, function ($a, $b) use ($query) {
-                    
-                    if($a['query'] == $b['query']) 
-                        return 0;
-                    
-                    $al = levenshtein($a['query'], $query);
-                    $bl = levenshtein($b['query'], $query);
-                    
-                    return $al < $bl ? -1 : 1;
-                });
-                
-            }
+	    // suggest
+	    $len = strlen($query);
+	    $nearest = \app\models\Query::find()->where('LENGTH(query) < :r AND LENGTH(query) > :l')->addParams([
+		':l' => $len - 2,
+		':r' => $len + 2
+	    ])->limit(20)->asArray()->all();
+
+	    usort($nearest, function ($a, $b) use ($query) {
+
+		if($a['query'] == $b['query']) 
+		    return 0;
+
+		$al = levenshtein($a['query'], $query);
+		$bl = levenshtein($b['query'], $query);
+
+		return $al < $bl ? -1 : 1;
+	    });
         }
         
+	$this->q = $query;
+	
         return $this->render('search', array(
+	    'q' => $query,
             'data' => $snippets,
             'nearest' => $nearest
         ));
