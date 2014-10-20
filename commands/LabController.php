@@ -31,7 +31,7 @@ class LabController extends Controller
         $importQueries = function ($file, $skip) {
             
             if(!file_exists($file))
-                throw new \CException('File not found');
+                throw new \Exception('File not found');
             
             $streamer = \Prewk\XmlStringStreamer::createStringWalkerParser($file);
             while ($node = $streamer->getNode()) {
@@ -53,7 +53,7 @@ class LabController extends Controller
             $hasEngineImported = false;
             
             if(!file_exists($file))
-                throw new \CException('File not found');
+                throw new \Exception('File not found');
             
             $engine_id = null;
             
