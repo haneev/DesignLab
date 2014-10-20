@@ -38,7 +38,7 @@ AppAsset::register($this);
 			<a class="navbar-brand" href="#">Design Lab</a>
 		    </div>
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<?php echo Html::beginForm('', 'POST', ['class' => 'navbar-form navbar-left']); ?>
+			<?php echo Html::beginForm(['site/search'], 'POST', ['class' => 'navbar-form navbar-left']); ?>
 			<div class="form-group">
 			    <?= Html::textInput('q', Yii::$app->controller->q, ['placeholder' => 'Typ hier uw term', 'class' => 'form-control']); ?>
 			    <?= Html::submitButton('Zoek', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>

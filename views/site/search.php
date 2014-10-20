@@ -27,3 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php $i++; ?>
     <?php endforeach; ?>
 </div>
+
+<?php if(count($data) == 0): ?>
+
+<div class="jumbotron">
+    <h1>Sorry</h1>
+    <p class="lead">No results</p>
+</div>
+
+<?php endif; ?>

@@ -11,6 +11,9 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    
+    public $layout = 'clean';
+    
     public function behaviors()
     {
         return [
@@ -102,15 +105,24 @@ class SiteController extends Controller
 
 	$score = function ($a) use ($q) {
 	    
-	    $score = 100; // higher better
+	    $score = 100 + (mt_rand(0, 9) - 5); // higher better
 	    
 	    $pos = stripos($a->title, $q);
 	    if($pos !== false) {
-		$score += 10;
+		$score += 20;
 	    }
 	    
 	    if($pos == 0) 
-		$score += 5;
+		$score += 10;
+	    
+	    if(strtolower($q) == strtolower($a->title))
+		$score += 20;
+	    
+	    
+	    // penalty for even not there
+	    if($pos === false) {
+		$score -= 50;
+	    }
 
 	    return $score;
 	};
@@ -136,7 +148,7 @@ class SiteController extends Controller
     
     public function actionSearch($q = '')
     {
-        $this->layout = 'clean';
+       
         
         $snippets = [];
         $nearest = [];
