@@ -12,6 +12,8 @@ use app\models\ContactForm;
 class SiteController extends Controller
 {
     
+    public $q;
+    
     public $layout = 'clean';
     
     public function behaviors()
