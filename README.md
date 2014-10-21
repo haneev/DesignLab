@@ -35,6 +35,6 @@ The data of the `sample-search-files` are placed in `data/queries/*` to import t
 
 To import all the samples into the database run:
 ```
-./yii lab/import samples
+./yii lab/import snippets
 ```
 this will take a while, after completing this the website is available at `http://your-host/index.php/site/search`

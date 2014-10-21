@@ -28,6 +28,7 @@ phpunit.phar
 
 assets/*
 !assets/.gitignore
+!assets/AppAsset.php
 protected/runtime/*
 !protected/runtime/.gitignore
 protected/data/*.db
