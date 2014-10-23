@@ -107,7 +107,7 @@ class SiteController extends Controller
 
 	$score = function ($a) use ($q) {
 	    
-	    $score = 100 + (mt_rand(0, 9) - 5); // higher better
+	    $score = 100; // higher better
 	    
 	    $pos = stripos($a->title, $q);
 	    if($pos !== false) {
@@ -164,8 +164,8 @@ class SiteController extends Controller
 	    // suggest
 	    $len = strlen($query);
 	    $nearest = \app\models\Query::find()->where('LENGTH(query) < :r AND LENGTH(query) > :l')->addParams([
-		':l' => $len - 2,
-		':r' => $len + 2
+		':l' => $len - 5,
+		':r' => $len + 5
 	    ])->limit(20)->asArray()->all();
 
 	    usort($nearest, function ($a, $b) use ($query) {

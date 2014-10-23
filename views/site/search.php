@@ -23,6 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
 	<p>
 	    <?=Html::encode($item->description); ?>
 	</p>
+	
+	<!-- <img src="http://circus.ewi.utwente.nl/FW14-topics-thumbnails/<?=str_replace('FW14-', '', $item->engine->id)?>/<?=$item->query->id?>_<?=($item->position < 9) ? '0'.($item->position+1) : $item->position+1?>_thumb.jpg" class="helperimage"> -->
     </div>
     <?php $i++; ?>
     <?php endforeach; ?>

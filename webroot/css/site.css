@@ -127,3 +127,8 @@ a.desc:after {
     height: 55px;
     overflow: hidden;
 }
+
+.result-item .helperimage {
+    width: 100px;
+    max-height: 100px;
+}

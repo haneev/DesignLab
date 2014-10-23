@@ -34,7 +34,24 @@ The data of the `sample-search-files` are placed in `data/queries/*` to import t
 (note that the file `yii` has the execution method (`chmod +x yii`)
 
 To import all the samples into the database run:
+
+The samples must be structures in the following way at `data/queries`
 ```
-./yii lab/import snippets
+examples
+data/queries/e001/7011.xml
+data/queries/e146/7431.xml
+```
+Command:
+```
+./yii lab/import snippets 
 ```
 this will take a while, after completing this the website is available at `http://your-host/index.php/site/search`
+
+To create a report as we need to, run the following command
+Note that the dir `data/report` must be writeable
+```
+./yii report/create [hostname of your server location, this url is prepended with http:// and appended with /site/search?q=] [output dir, default to data/report]
+
+Example for Han
+./yii report/create designlab.plank.nl 
+```
