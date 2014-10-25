@@ -29,19 +29,23 @@ asdf
 asdf
 
 \section{How to evaluate this project designs}
-- How do we propose to test this (evaluate this project)
-- Test of our design is correct
-- Test if results are expected
-- How to check if our designs are oke
+To test this new layouts we have to establish at least two layouts to compare. In order to get a good comparison we need to control the variables of the design. The user has a question in mind, and which design will answer that question the best. 
+
+To perform this evaluation we need to have a control, which can be in our case the 10 results for each search engine in a tabbed environment. The user can find the information by clicking the right tab and will find the information in that tab. The other designs we have are blended designs.
+
+We will test two things. Are the results the correct results and how fast will the user find his answer. 
+
+To find out if a design performs better than the baseline we will measure the time the user will have its answer. The faster the user finds its answer the better. We will measure this by the time the user enters the query until clicking on the answer page. In order to perform this evaluation several test subjects are needed that will perform several queries on the different designs. They never will have to do the same query in at two designs, because that will give them some notion of what they are looking for. So, every person has to perform 30 queries. 10 on the base design, 10 on version 1 and 10 on version 2. The time is compared for the same query for different persons.
+
+To automate this process our blended designs are evaluated with a list of answers pages the experts described by~\cite{lalmas2011aggregated} have given for each query. Our automated blended design must have those answers as a result, or else our design is wrong. The more results pages we have the experts have given the better our design is performing. This can be automatic by counting the results which are in the result or not. 
+
+When both tests result in that some design is better than the other we will say that the design is better. % wut :P
 
 \section{Conclusions}
 Small recap of what we did
 
-
 \section{Checklist}
 \begin{enumerate}
-\item Check of in the README.md is explained how to make reports
-\item Check of scripts is documented oke in README.md
 \item Check if our readme is valid with a new clean install
 \end{enumerate}
 
