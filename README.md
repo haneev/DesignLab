@@ -50,8 +50,8 @@ this will take a while, after completing this the website is available at `http:
 To create a report as we need to, run the following command
 Note that the dir `data/report` must be writeable
 ```
-./yii report/create [hostname of your server location, this url is prepended with http:// and appended with /site/search?q=] [output dir, default to data/report]
+ ./yii report/create [url where query is replaced with {q}] [out dir]
 
 Example for Han
-./yii report/create designlab.plank.nl 
+./yii report/create http://designlab.plank.nl/site/search?q={q}
 ```

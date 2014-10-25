@@ -10,14 +10,6 @@ namespace app\commands;
 use yii\console\Controller;
 use Yii;
 
-/**
- * This command echoes the first argument that you have entered.
- *
- * This command is provided as an example for you to learn how to create console commands.
- *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
- */
 class LabController extends Controller
 {
     
@@ -27,7 +19,7 @@ class LabController extends Controller
     
     public function actionImport($what, $skip = 0) {
         
-        // Convenience method for creating a file streamer with the default parser
+        // Read each file and import the query used
         $importQueries = function ($dir, $skip) {
             
             if(!is_dir($dir))
@@ -50,6 +42,9 @@ class LabController extends Controller
 	    }
         };
         
+	/** 
+	 * Import snippets in a dir
+	 */
         $importSnippets = function ($dir, $skip) {
             
             $hasEngineImported = false;
@@ -116,6 +111,8 @@ class LabController extends Controller
             
         };
         
+	
+	// what to import?
         if($what == 'queries') {
             $importQueries(Yii::$app->basePath.'/data/queries/e001', $skip);
             echo 'Success queries'.PHP_EOL;
@@ -128,10 +125,6 @@ class LabController extends Controller
         }
         
         return 1;
-    }
-    
-    public function actionIndex() {
-        echo 'hello';
     }
 }
 

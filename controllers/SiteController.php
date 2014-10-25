@@ -11,7 +11,6 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
-    
     public $q;
     
     public $layout = 'clean';
@@ -45,10 +44,6 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
         ];
     }
     
@@ -79,26 +74,12 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
-
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
     
+    /**
+     * Find all occurences and perform a reward/punishment ranking based on title...
+     * @param type $q
+     * @return type
+     */
     private function find($q) {
 	
 	$result = \app\models\Snippet::find()->joinWith('query', 'engine')->where([
@@ -150,8 +131,6 @@ class SiteController extends Controller
     
     public function actionSearch($q = '')
     {
-       
-        
         $snippets = [];
         $nearest = [];
 	$query = '';
@@ -161,12 +140,12 @@ class SiteController extends Controller
             
             $snippets = $this->find($query);
             
-	    // suggest
+	    // suggest other terms, did you mean
 	    $len = strlen($query);
 	    $nearest = \app\models\Query::find()->where('LENGTH(query) < :r AND LENGTH(query) > :l')->addParams([
 		':l' => $len - 5,
 		':r' => $len + 5
-	    ])->limit(20)->asArray()->all();
+	    ])->limit(10)->asArray()->all();
 
 	    usort($nearest, function ($a, $b) use ($query) {
 

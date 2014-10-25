@@ -9,23 +9,28 @@ class ReportController extends Controller
 {
     /**
      * 
+     * Will create a file for every query in a output directory, structured for fedweb trec
+     * 
      * @param type $host 
      * 
      * useage
      * 
-     *	    ./yii report/create designlab.plank.nl [out dir]
+     *	    ./yii report/create http://designlab.plank.nl/site/search?q={q} [out dir]
      * 
      */
-    public function actionCreate($host, $out = 'data/report') {
+    public function actionCreate($url = 'http://designlab.plank.nl/site/search?q={q}', $out = 'data/report') {
 	
 	echo 'Creating report in '.Yii::$app->basePath.'/'.$out.PHP_EOL;
 	
-	$url = 'http://'.$host.'/site/search?q=';
+	$out_dir = Yii::$app->basePath.'/'.$out;
+	if(!is_dir($out_dir))
+	    mkdir($out_dir);
+	
 	$queries = Query::find()->all();
 	foreach($queries as $q) {
-	    $qurl = $url.urlencode($q->query);
+	    $qurl = str_replace('{q}', urlencode($q->query), $url);
 
-	    $out_path_dir = Yii::$app->basePath.'/'.$out.'/'.$q->id;
+	    $out_path_dir = $out_dir.'/'.$q->id;
 	    if(!is_dir($out_path_dir))
 		mkdir($out_path_dir);
 	    
@@ -42,7 +47,16 @@ class ReportController extends Controller
 	echo 'Done creating report'.PHP_EOL;
     }
     
+    /**
+     * Post process each file such that the style is correct and working
+     * @param type $fileContent
+     * @return type
+     */
     public function postProcess($fileContent) {
+	
+	$fileContent = str_replace('/assets/','../assets/', $fileContent);
+	$fileContent = str_replace('"/css/','"../css/', $fileContent);
+	
 	return $fileContent;
     }
 }
