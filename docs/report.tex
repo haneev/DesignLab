@@ -33,13 +33,17 @@ I
 
 \section{Decisions we made}
 \label{sec:decisions}
-- Added some features
+- Put together a small ranking on the title. When the search term is in it or the title is the whole search term it is boosted a little. Even when the title starts with the search term the result is boosted. 
 - Why we have this two views
 
 % Han's layout
 \section{Design One}
 \label{sec:layoutHan}
+In this first design we have chosen to blend in all the search engines. By blending it together all the results get the same amount of space in the layout and are equally important. This can help the user to find the best result. The results are sorted as described in section~\ref{sec:decisions}. 
 
+Each block is a search result and has a title and a link to the original source. Each block has the same width and height to give each result the same importance. Furthermore the top-left result is the first result and possibly the best answer to the question. The relevance is going from the left to the right and top to bottom. The source is also listed at the result, such that the user can filter the search engines. 
+
+In our design the whole screen is used, such that there is not space left unused. The blocks will also float to other screen sizes, such that each browser has the perfect view. In order to show as much information to the user. However, to much information is not good, and that is solved by giving each search result the same width and height. 
 
 % Rik's layout
 \section{Design Two}
@@ -68,7 +72,6 @@ Therefore it is important to note that this design was developed on a computer s
 When using this resolution or a higher resolution like 1920 x 1080 pixels the display of the design should be correct.
 When considering the screen width, all resolutions from 1024 x 768 pixels and higher should be able to display five categories beside each other, although the text might be not userfriendly to read at the lower resolutions.
 When considering the screen height, all resolutions from 1280 x 1024 pixels and higher should be able to display the headings of the second row of categories.
-
 
 \section{How to evaluate this project designs}
 \label{sec:evaluation}
