@@ -104,19 +104,23 @@ When considering the screen height, all resolutions from 1280 x 1024 pixels and 
 
 \section{How to evaluate this project designs}
 \label{sec:evaluation}
-To test our designs we have to establish at least two designs to compare. 
-In order to get a good comparison we need to control the variables of the design. 
-The user has a question in mind, and which design will answer that question the best. 
+To test new designs at least two designs to compare have to be established. 
+In order to get a good comparison the amount of variables of a design has to be minimized. 
+In general the design that answers a user's question as best is considered as the best design.
 
-To perform this evaluation we need to have a control, which can be in our case the 10 results for each search engine in a tabbed environment. The user can find the information by clicking the right tab and will find the information in that tab. The other designs we have are blended designs.
+To perform such an evaluation we need to have a control variable, which can be in our case ten results for each search engine in a tabbed environment. The user can find the information by clicking the correct tab. The other designs we have are blended designs.
 
-We will test two things. Are the results the correct results and how fast will the user find his answer. 
+Two aspects will be evaluated: are the results the correct results, and how fast will the user find his answer?
 
-To find out if a design performs better than the baseline we will measure the time the user will have its answer. The faster the user finds its answer the better. We will measure this by the time the user enters the query until clicking on the answer page. In order to perform this evaluation several test subjects are needed that will perform several queries on the different designs. They never will have to do the same query in at two designs, because that will give them some notion of what they are looking for. So, every person has to perform 30 queries. 10 on the base design, 10 on version 1 and 10 on version 2. The time is compared for the same query for different persons.
+To find out if a design performs better than the baseline design, we will measure the time it takes for the user to have his desired answer. The faster the user finds the correct result, the better a design performs. The time is measured from the moment the user enters the query until clicking on the correct result. 
 
-To automate this process our blended designs are evaluated with a list of answers pages the experts described by~\cite{lalmas2011aggregated} have given for each query. Our automated blended design must have those answers as a result, or else our design is wrong. The more results pages we have the experts have given the better our design is performing. This can be automatic by counting the results which are in the result or not. 
+In order to perform this evaluation several test subjects are needed that will perform several queries on the different designs. They may not execute the same query in two designs, because that will give them some notion of what they are looking for. For example, every person has to perform thirty queries: ten on the base design, ten on the first design, and ten on the second design. The time is compared for the same query for different persons.
 
-When both tests result in that some design is better than the other we will say that the design is better. % wut :P
+To automate this process our blended designs are evaluated with a list of correct results (answers) that is given for each query by experts as described by~\cite{lalmas2011aggregated}. Our automated blended designs must have those answers as a result, or else our design is wrong. 
+The more answers we have in our result pages, the better our design is performing.
+This can be determined automatically by simple testing if the answers are in the results or not.
+
+A design is considered better than an other design when it outscores the other design in both tests.
 
 \section{Conclusions}
 \label{sec:conclusion}
