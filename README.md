@@ -47,6 +47,11 @@ Command:
 ```
 this will take a while, after completing this the website is available at `http://your-host/index.php/site/search`
 
+For Design Two in the url ```&engine=rik``` should be added, for example
+```http://designlab.plank.nl/site/search?q=TERM&engine=rik```
+
+For Design One this is not necessary.
+
 To create a report as we need to, run the following command
 Note that the `[our dir]` must be writeable
 ```
