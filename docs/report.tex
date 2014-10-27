@@ -2,34 +2,33 @@
 
 \title{Report of FedWeb DesignLab Challenge}
 \author{
-        Han van der Veen \\
+        Han van der Veen \\ s1007130
             \and
-			Rik van Outersterp
+			Rik van Outersterp \\ s1010875
 }
 \date{\today}
 
 \begin{document}
 \maketitle
 
-\begin{abstract}
-This is the paper's abstract
-\end{abstract}
+%\begin{abstract}
+%Aangezien het een verslag is en geen paper lijkt mij een abstract niet nodig.
+%\end{abstract}
 
 \section{Introduction}
-This document elaborates our submission for the \textit{Design Challenge} assignment of the course \textit{Information Retrieval} ath the University of Twente. 
+This document elaborates our submission for the \textit{Design Challenge} assignment of the course \textit{Information Retrieval} at the University of Twente. 
 For this assignment a web result page for aggregated web search had to designed.
-The results of this web search consist of a combination of multiple (independent) search engines.
+The results of this web search consist of the results of multiple (independent) search engines.
 The designed result page is planned to be used by the course' supervisors in a successive user experiment of which the purpose is to determine which pages give the best overall user experience, followed by a presentation of this study at the Text Retrieval Conference (TREC) in November 2014.
 
 In this document we elaborate our web result pages.
 The remainder of the document is setup as follows.
-In section~\ref{sec:decisions} we .......
-In sections~\ref{sec:layoutHan} and~\ref{sec:layoutRik} we present our two designs. 
-A proposal for evaluating our pages is presented in section~\ref{sec:evaluation}.
+In section~\ref{sec:designs} our two designs are presented.
+A proposal for evaluating our designs is presented in section~\ref{sec:evaluation}.
 This document is concluded in section~\ref{sec:conclusion}.
 
 \section{Designs}
-\label{sec:decisions}
+\label{sec:designs}
 Both our designs are based on the same system.
 The ranking of the search results is in both designs based on the title of the result.
 A higher rank is achieved by a search result when the title contains the search term.
@@ -42,11 +41,23 @@ In the following subsections both designs are presented.
 % Han's layout
 \subsection{Design One}
 \label{sec:layoutHan}
-In this first design we have chosen to blend in all the search engines. By blending it together all the results get the same amount of space in the layout and are equally important. This can help the user to find the best result. The results are sorted as described in section~\ref{sec:decisions}. 
+For the first design we have chosen to blend in all the search engines.
+By blending it together all the results get the same amount of space in the layout and should be therefore considered as equally important. 
+This allows the user to be able to determine the best result by himself instead of letting the system decide what the best result should be.
+As mentioned this design uses the sorting system that was described in section~\ref{sec:designs}.
 
-Each block is a search result and has a title and a link to the original source. Each block has the same width and height to give each result the same importance. Furthermore the top-left result is the first result and possibly the best answer to the question. The relevance is going from the left to the right and top to bottom. The source is also listed at the result, such that the user can filter the search engines. 
+Each block in the design represents a search result with its title, description, and a link to the original source. 
+Each block has the same width and height to give each result the same importance. 
+Furthermore the top-left result is the first result and can be seen as the most relevant result to the query.
+As can be seen from the result reports the relevance is order from left to right, and then from top to bottom. 
+The source is also shown in the block of each result.
+This allows the user to scan the results for results of specific search engines. 
 
-In our design the whole screen is used, such that there is not space left unused. The blocks will also float to other screen sizes, such that each browser has the perfect view. In order to show as much information to the user. However, to much information is not good, and that is solved by giving each search result the same width and height. 
+In our design the whole screen is used, such that there is no unused space. 
+The blocks will also float to other screen sizes, such that each browser has the same, correct display of the result page.
+The dynamic setup of the design allows us to show as much information to the user as possible. 
+However, it should be noted that too much information can distract the user, making searching for a desired result inefficient.
+By giving each search result the same width and height we aim to prevent this. 
 
 % Rik's layout
 \subsection{Design Two}
@@ -78,7 +89,9 @@ When considering the screen height, all resolutions from 1280 x 1024 pixels and 
 
 \section{How to evaluate this project designs}
 \label{sec:evaluation}
-To test this new layouts we have to establish at least two layouts to compare. In order to get a good comparison we need to control the variables of the design. The user has a question in mind, and which design will answer that question the best. 
+To test our designs we have to establish at least two designs to compare. 
+In order to get a good comparison we need to control the variables of the design. 
+The user has a question in mind, and which design will answer that question the best. 
 
 To perform this evaluation we need to have a control, which can be in our case the 10 results for each search engine in a tabbed environment. The user can find the information by clicking the right tab and will find the information in that tab. The other designs we have are blended designs.
 
