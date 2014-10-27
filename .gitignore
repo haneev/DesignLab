@@ -27,11 +27,11 @@ phpunit.phar
 /phpunit.xml
 
 # latex
-.aux
-.bbl
-.blg
-.synctex.gz
-.pdf
+*.aux
+*.bbl
+*.blg
+*.synctex.gz
+*.pdf
 
 assets/*
 !assets/.gitignore
