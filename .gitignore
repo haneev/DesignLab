@@ -26,6 +26,12 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
+# latex
+.aux
+.bbl
+.blg
+.synctex.gz
+
 assets/*
 !assets/.gitignore
 !assets/AppAsset.php

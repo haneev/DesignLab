@@ -16,19 +16,51 @@ This is the paper's abstract
 \end{abstract}
 
 \section{Introduction}
-Some introduction in the challenge
+This document elaborates our submission for the \textit{Design Challenge} assignment of the course \textit{Information Retrieval} ath the University of Twente. 
+For this assignment a web result page for aggregated web search had to designed.
+The results of this web search consist of a combination of multiple (independent) search engines.
+The designed result page is planned to be used by the course' supervisors in a successive user experiment of which the purpose is to determine which pages give the best overall user experience, followed by a presentation of this study at the Text Retrieval Conference (TREC) in November 2014.
+
+In this document we elaborate our web result pages.
+The remainder of the document is setup as follows.
+In section~\ref{sec:decisions} we .......
+In sections~\ref{sec:layoutHan} and~\ref{sec:layoutRik} we present our two designs. 
+A proposal for evaluating our pages is presented in section~\ref{sec:evaluation}.
+This document is concluded in section~\ref{sec:conclusion}.
+
+% Outline
+I
 
 \section{Decisions we made}
+\label{sec:decisions}
 - Added some features
 - Why we have this two views
 
-\section{Review of Design 1}
-asdf
+% Han's layout
+\section{Design One}
+\label{sec:layoutHan}
 
-\section{Review of Design 2}
-asdf
+
+% Rik's layout
+\section{Design Two}
+\label{sec:layoutRik}
+The second design has another approach than our first design.
+In this design the results are ordered by type.
+In order to do this a selection of the used search engines had to be made.
+In the file FW14-engines.txt all used search engines were mentioned.
+These search engines were grouped together when they are specialized in a similar area.
+This aggregation led to twenty groups of types of websites.
+In table~\ref{tab:selectionRik} in appendix~\ref{app:enginetypes} the selection is shown.
+
+We decided to not develop a responsive layout due to time constraints.
+Therefore it is important to note that this design was developed on a computer system with a resolution of 1680 x 1050 pixels.
+When using this resolution or a higher resolution like 1920 x 1080 pixels the display of the design should be correct.
+When considering the screen width, all resolutions from 1024 x 768 pixels and higher should be able to display five categories beside each other, although the text might be not userfriendly to read at the lower resolutions.
+When considering the screen height, all resolutions from 1280 x 1024 pixels and higher should be able to display the headings of the second row of categories.
+
 
 \section{How to evaluate this project designs}
+\label{sec:evaluation}
 To test this new layouts we have to establish at least two layouts to compare. In order to get a good comparison we need to control the variables of the design. The user has a question in mind, and which design will answer that question the best. 
 
 To perform this evaluation we need to have a control, which can be in our case the 10 results for each search engine in a tabbed environment. The user can find the information by clicking the right tab and will find the information in that tab. The other designs we have are blended designs.
@@ -42,6 +74,7 @@ To automate this process our blended designs are evaluated with a list of answer
 When both tests result in that some design is better than the other we will say that the design is better. % wut :P
 
 \section{Conclusions}
+\label{sec:conclusion}
 Small recap of what we did
 
 \section{Checklist}
@@ -51,5 +84,10 @@ Small recap of what we did
 
 \bibliographystyle{abbrv}
 \bibliography{libfile}
+
+\appendix
+\section{Search Engine Types}
+\label{app:enginetypes}
+\include{enginetypes}
 
 \end{document}
