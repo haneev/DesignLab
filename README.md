@@ -50,13 +50,15 @@ this will take a while, after completing this the website is available at `http:
 To create a report as we need to, run the following command
 Note that the `[our dir]` must be writeable
 ```
- ./yii report/create [url where query is replaced with {q}] [out dir] [engine]
+ ./yii report/create [url where query is replaced with {q}] [out dir]
 ```
 Example for Han (default `[out dir]` is `data/report`)
+
 ```
 ./yii report/create http://designlab.plank.nl/site/search?q={q}
 ```
+
 Example for Rik (make sure the folder `webroot` is at the same level as `data`)
 ```
-./yii report/create http://localhost/designlab2/DesignLab/webroot/site/search?q={q} data/report rik
+./yii report/create "http://localhost/designlab2/DesignLab/webroot/site/search?q={q}&engine=rik" data/report_rik
 ```
