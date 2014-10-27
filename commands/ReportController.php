@@ -18,7 +18,7 @@ class ReportController extends Controller
      *	    ./yii report/create http://designlab.plank.nl/site/search?q={q} [out dir]
      * 
      */
-    public function actionCreate($url = 'http://designlab.plank.nl/site/search?q={q}', $out = 'data/report', $engine = 'han') {
+    public function actionCreate($url = 'http://designlab.plank.nl/site/search?q={q}', $out = 'data/report') {
 	
 	echo 'Creating report in '.Yii::$app->basePath.'/'.$out.PHP_EOL;
 	
@@ -37,7 +37,7 @@ class ReportController extends Controller
 	    $out_file = $out_path_dir.'/index.html';
 	    
 	    // read and store
-	    $indexData = file_get_contents($qurl.($engine=='rik'?'&engine=rik':''));
+	    $indexData = file_get_contents($qurl);
 	    if($indexData) 
 		file_put_contents($out_file, $this->postProcess($indexData));
 
@@ -54,15 +54,9 @@ class ReportController extends Controller
      */
     public function postProcess($fileContent) {
 
-        // Reports of Rik's layout
-        if (strpos($fileContent,'/designlab2/DesignLab/') !== false) {
-            $fileContent = str_replace('/designlab2/DesignLab/webroot/assets/', '../../../webroot/assets/', $fileContent);
-            $fileContent = str_replace('/designlab2/DesignLab/webroot/css/', '../../../webroot/css/', $fileContent);
-        } else {
-            // Reports of Han's layout
-            $fileContent = str_replace('/assets/','../assets/', $fileContent);
-            $fileContent = str_replace('"/css/','"../css/', $fileContent);
-        }
+        // Reports of Han's layout
+        $fileContent = str_replace('/assets/','../assets/', $fileContent);
+        $fileContent = str_replace('"/css/','"../css/', $fileContent);
 	
 	return $fileContent;
     }
