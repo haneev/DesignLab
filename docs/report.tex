@@ -62,16 +62,15 @@ By giving each search result the same width and height, and thus a structured re
 % Rik's layout
 \subsection{Design Two}
 \label{sec:layoutRik}
-The second design has another approach than our first design.
-In this design the results are ordered by type.
-In order to do this a selection of the used search engines had to be made.
-In the file FW14-engines.txt all used search engines were mentioned.
-These search engines were grouped together when they are specialized in a similar area.
-This aggregation led to twenty groups of types of websites.
-In table~\ref{tab:selectionRik} in appendix~\ref{app:enginetypes} the selection is shown.
+The second design has an other approach than our first design.
+In this design the results are ordered by category first before ordering by relevance.
+In order to do this each search engine had to be allocated to a category.
+For this we used the file \textit{FW14-engines.txt}, which consists of all search engines used to generate the FedWeb result data.
+In total 21 categories were used to group similar search engines, and thus there search results, together.
+In table~\ref{tab:selectionRik} in appendix~\ref{app:enginetypes} the allocation of the search engines to categories is shown.
 
-The design is built on the thought of the current use of widescreens.
-For these cases long vertical lists may not be the most userfriendly in our opinion, thus we looked into a design that has a more horizontal approach.
+The design is built while keeping in mind the current use of widescreens.
+In our opinion long vertical lists may not be the most userfriendly for widescreens, thus we looked into a design that has a more horizontal approach.
 
 The design consists of an undefined number of rows with each consisting of a maximum of five categories.
 The categories are sorted based on the retrieval of the results, so the category of the first retrieval will be the category in the upper left of the display, the next new category will be next to it on the right, et cetera.
@@ -82,8 +81,8 @@ Each row has a maximum height, such that the user can see already more categorie
 It should make the user immediately aware of the fact that there are more types of search results, instead of having to scroll down first.
 
 We decided to not develop a responsive layout due to time constraints.
-Therefore it is important to note that this design was developed on a computer system with a resolution of 1680 x 1050 pixels.
-When using this resolution or a higher resolution like 1920 x 1080 pixels the display of the design should be correct.
+Therefore it is important to note that this design was developed on a computer system with a screen resolution of 1680 x 1050 pixels.
+When using this resolution, or a higher resolution like 1920 x 1080 pixels, the display of the design should be correct.
 When considering the screen width, all resolutions from 1024 x 768 pixels and higher should be able to display five categories beside each other, although the text might be not userfriendly to read at the lower resolutions.
 When considering the screen height, all resolutions from 1280 x 1024 pixels and higher should be able to display the headings of the second row of categories.
 
@@ -110,6 +109,8 @@ Small recap of what we did
 \section{Checklist}
 \begin{enumerate}
 \item Check if our readme is valid with a new clean install
+\item Rik: screenshots van de twee designs toevoegen
+\item Rik: reports van mijn layout controleren
 \end{enumerate}
 
 \bibliographystyle{abbrv}
