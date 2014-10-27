@@ -48,10 +48,15 @@ Command:
 this will take a while, after completing this the website is available at `http://your-host/index.php/site/search`
 
 To create a report as we need to, run the following command
-Note that the dir `data/report` must be writeable
+Note that the `[our dir]` must be writeable
 ```
- ./yii report/create [url where query is replaced with {q}] [out dir]
+ ./yii report/create [url where query is replaced with {q}] [out dir] [engine]
 
-Example for Han
+Example for Han (default `[out dir]` is `data/report`)
+```
 ./yii report/create http://designlab.plank.nl/site/search?q={q}
+```
+Example for Rik (make sure the folder `webroot` is at the same level as `data`)
+```
+./yii report/create http://localhost/designlab2/DesignLab/webroot/site/search?q={q} data/report rik
 ```
