@@ -51,7 +51,7 @@ To create a report as we need to, run the following command
 Note that the `[our dir]` must be writeable
 ```
  ./yii report/create [url where query is replaced with {q}] [out dir] [engine]
-
+```
 Example for Han (default `[out dir]` is `data/report`)
 ```
 ./yii report/create http://designlab.plank.nl/site/search?q={q}
