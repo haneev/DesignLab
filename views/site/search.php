@@ -9,6 +9,22 @@ if(isset($_GET['engine']) && $_GET['engine'] == 'rik') {
     $this->params['breadcrumbs'][] = $this->title;
     ?>
 
+    <style>
+        div::-webkit-scrollbar {
+            width: .5em;
+        }
+        div::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
+        }
+
+        div::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            outline: 0px solid slategrey;
+        }
+
+    </style>
+
+
     <div class="container">
         <p><?php if (count($nearest) > 0): ?> Did you mean:
                 <?php foreach ($nearest as $term): ?>
@@ -17,13 +33,13 @@ if(isset($_GET['engine']) && $_GET['engine'] == 'rik') {
         </p>
     </div>
 
-    <div class="container-fluid">
+    <div>
         <?php $i = 1; ?>
         <?php
 
-            $collection = array();
+        $collection = array();
 
-            foreach ($data as $item):
+        foreach ($data as $item):
 
             $category = 'Other';
             $id = str_replace('FW14-e', '', $item->engine->id);
@@ -49,54 +65,74 @@ if(isset($_GET['engine']) && $_GET['engine'] == 'rik') {
             elseif( $id == 172 || $id == 173 ) { $category = 'Travel'; }
 
             $collection[$category][] = array( 'i'         => $i,
-                                            'engine'    => $item->engine->name,
-                                            'position'  => $item->position,
-                                            'title'     => $item->title,
-                                            'desc'      => $item->description,
-                                            'url'       => $item->link_extern,
-                                            'engineId'  => $item->engine->id,
-                                            'queryId'   => $item->query->id,
-                                            'cat'       => $category
-                                            );
+                'engine'    => $item->engine->name,
+                'position'  => $item->position,
+                'title'     => $item->title,
+                'desc'      => $item->description,
+                'url'       => $item->link_extern,
+                'engineId'  => $item->engine->id,
+                'queryId'   => $item->query->id,
+                'cat'       => $category
+            );
             $i++;
-            endforeach;
-            #var_dump($collection);
-            $i = 1;
-            foreach ($collection as $key => $col):
+        endforeach;
+        #var_dump($collection);
+        $i = 1;
+        foreach ($collection as $key => $col):
 
-                ?>
+            // Dynamische hoogte als 70% (zie hieronder) was veel mooier geweest, maar ja... Geen zin in nu. :-P
+            ?>
 
-                <div class="col-md-2 result-<?= $i ?> color<?= (($i % 4) + 1) ?>">
-                    <h3><?= $key ?></h3>
-                <?php
-                foreach($col as $item):
+            <div class="col-md-2" style="width: 20%;height=100%" >
+                <h2 class="color<?= (($i % 4) + 1) ?>" style="padding:3px;"><?= $key ?></h2>
+                <div style="max-height:600px;overflow-y:auto;overflow-x:hidden;">
+                    <?php
+                    foreach($col as $item):
 
-                    ?>
+                        ?>
 
-                <span class="counter">
-                    <span class="nr">
-                        <?php echo $item['cat']; ?>
-                    </span>
-                    from
-                    <?php echo Html::a($item['engine'], $item['url'], array('target' => '_new')); ?>
-                    (<?= $item['position'] ?>)</span>
+                        <!--
+                        <span class="counter">
+                            <span class="nr">
+                                <?php echo $item['cat']; ?>
+                            </span>
+                            from
+                            <?php echo Html::a($item['engine'], $item['url'], array('target' => '_new')); ?>
+                            (<?= $item['position'] ?>)</span>
+                            -->
+                        <div style="border-bottom:1px solid #dfdfdf;margin-bottom:10px;padding-bottom:10px;">
+                            <p>
 
-                <h3><?= Html::a(Html::encode($item['title']), $item['url'], array('target' => '_new')); ?></h3>
+                                <span style="font-size:20px"><?= Html::a(Html::encode($item['title']), $item['url'], array('target' => '_new')); ?></span>
+                                <br>
+                                <span style="font-size:10px">Obtained from <?php echo Html::a($item['engine'], $item['url'], array('target' => '_new')); ?></span>
 
-                <p>
-                    <?= Html::encode($item['desc']); ?>
-                </p>
+                            </p>
+                            <span align="justify">
+                                <smaller>
+                                    <div style="float:left;clear:left;margin:3px;verticle-align:middle;">
+                                        <img src="http://circus.ewi.utwente.nl/FW14-topics-thumbnails/<?= str_replace('FW14-', '', $item['engineId']) ?>/<?= $item['queryId'] ?>_<?= ($item['position'] < 9) ? '0' . ($item['position'] + 1) : $item['position'] + 1 ?>_thumb.jpg"
+                                                                                                              class="helperimage" style="max-width:100px;max-height:100px;">
+                                    </div>
+                                    <?= Html::encode($item['desc']); ?>
 
-                <img src="http://circus.ewi.utwente.nl/FW14-topics-thumbnails/<?= str_replace('FW14-', '', $item['engineId']) ?>/<?= $item['queryId'] ?>_<?= ($item['position'] < 9) ? '0' . ($item['position'] + 1) : $item['position'] + 1 ?>_thumb.jpg" class="helperimage">
+                                </smaller>
+                            </span>
 
+                            <br clear="both">
+                        </div>
 
-        <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </div>
+            </div>
+            <?php if($i % 5 == 0) { ?>
+            <br clear="both">
+        <?php } ?>
             <?php
-                $i++;
-            endforeach; ?>
+            $i++;
+        endforeach; ?>
     </div>
-
+    <br clear="both">
     <?php if (count($data) == 0): ?>
 
         <div class="jumbotron">
