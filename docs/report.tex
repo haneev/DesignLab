@@ -1,5 +1,7 @@
 \documentclass[12pt]{article}
 
+\usepackage{graphicx}
+
 \title{Report of FedWeb DesignLab Challenge}
 \author{
         Han van der Veen \\ s1007130
@@ -41,10 +43,17 @@ In the following subsections both designs are presented.
 % Han's layout
 \subsection{Design One}
 \label{sec:layoutHan}
-For the first design we have chosen to blend in all the search engines.
+For the first design (Design One, see figure~\ref{fig:designOne}) we have chosen to blend in all the search engines.
 By blending it together, all the results get the same amount of space in the layout and should be therefore considered as equally important. 
 This allows the user to be able to determine the best result by himself instead of letting the system decide what the best result should be.
 As mentioned this design uses the sorting system that was described in the beginning of section~\ref{sec:designs}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{designOne.png}
+  \caption{Screenshot of Design One.}
+\label{fig:designOne}
+\end{figure}
 
 Each block in the design represents a search result with its title, description, and a link to the original source. 
 Each block has the same width and height to give each result the same importance. 
@@ -62,12 +71,19 @@ By giving each search result the same width and height, and thus a structured re
 % Rik's layout
 \subsection{Design Two}
 \label{sec:layoutRik}
-The second design has an other approach than our first design.
+The second design (Design Two, see figure~\ref{fig:designTwo}) has an other approach than our first design.
 In this design the results are ordered by category first before ordering by relevance.
 In order to do this each search engine had to be allocated to a category.
 For this we used the file \textit{FW14-engines.txt}, which consists of all search engines used to generate the FedWeb result data.
 In total 21 categories were used to group similar search engines, and thus there search results, together.
 In table~\ref{tab:selectionRik} in appendix~\ref{app:enginetypes} the allocation of the search engines to categories is shown.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{designTwo.png}
+  \caption{Screenshot of Design Two.}
+\label{fig:designTwo}
+\end{figure}
 
 The design is built while keeping in mind the current use of widescreens.
 In our opinion long vertical lists may not be the most userfriendly for widescreens, thus we looked into a design that has a more horizontal approach.
