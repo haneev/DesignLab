@@ -28,16 +28,19 @@ In sections~\ref{sec:layoutHan} and~\ref{sec:layoutRik} we present our two desig
 A proposal for evaluating our pages is presented in section~\ref{sec:evaluation}.
 This document is concluded in section~\ref{sec:conclusion}.
 
-% Outline
-I
-
-\section{Decisions we made}
+\section{Designs}
 \label{sec:decisions}
-- Put together a small ranking on the title. When the search term is in it or the title is the whole search term it is boosted a little. Even when the title starts with the search term the result is boosted. 
-- Why we have this two views
+Both our designs are based on the same system.
+The ranking of the search results is in both designs based on the title of the result.
+A higher rank is achieved by a search result when the title contains the search term.
+An even higher ranking is achieved when the title starts with the search term or even matches the search term completely (case insensitive).
+
+Since the assignment requires to have as many designs as group members we have developed two designs.
+We decided to put our own personal ideas in each design, such that two different designs were developed instead of two very similar designs.
+In the following subsections both designs are presented.
 
 % Han's layout
-\section{Design One}
+\subsection{Design One}
 \label{sec:layoutHan}
 In this first design we have chosen to blend in all the search engines. By blending it together all the results get the same amount of space in the layout and are equally important. This can help the user to find the best result. The results are sorted as described in section~\ref{sec:decisions}. 
 
@@ -46,7 +49,7 @@ Each block is a search result and has a title and a link to the original source.
 In our design the whole screen is used, such that there is not space left unused. The blocks will also float to other screen sizes, such that each browser has the perfect view. In order to show as much information to the user. However, to much information is not good, and that is solved by giving each search result the same width and height. 
 
 % Rik's layout
-\section{Design Two}
+\subsection{Design Two}
 \label{sec:layoutRik}
 The second design has another approach than our first design.
 In this design the results are ordered by type.
